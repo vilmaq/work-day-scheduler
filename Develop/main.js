@@ -6,12 +6,11 @@ const displayCurrentDate = () => {
 };
 
 const renderCalendarEvents = () => {
-  //get data from local
+  //get data from local Sorage
   const plannerEvents = JSON.parse(localStorage.getItem("plannerEvents"));
 
   if (plannerEvents !== null) {
     const currentHour = moment().hour();
-    // const currentHour = 11;
     const timeBlocks = $(".container .row");
     const callback = function () {
       const timeBlockTime = Number.parseInt($(this).data("time"), 10);
@@ -51,14 +50,12 @@ const onClick = function (event) {
     console.log("save button click");
     const key = target.attr("id");
     const value = target.parent().find("textarea").val();
-
+    //declare a new object to push the Planner event pair key and value to the local Storage when the onClick() function is called when clicking the Save button
     const newObject = {
       ...plannerEvents,
       [key]: value,
     };
     localStorage.setItem("plannerEvents", JSON.stringify(newObject));
-    console.log(key, value);
-    console.log(plannerEvents);
   }
 };
 const onReady = () => {

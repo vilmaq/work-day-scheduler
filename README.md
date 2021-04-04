@@ -32,6 +32,8 @@ THEN the saved events persist
 
 ### Screenshots
 
+The following printscreen shows how the data is stored in the local storage after save button is clicked
+
 ![Calendar-LocalStorage](./Assets/screenshots/work-agenda-localStorage.png)
 
 ## Review
