@@ -41,10 +41,30 @@ const renderCalendarEvents = () => {
   //check if data is null
 
   //render the  data in the planner
+};
+//define onClick function
+const onClick = function (event) {
+  const plannerEvents = JSON.parse(localStorage.getItem("plannerEvents"));
+  const target = $(event.target);
 
-  //
+  if (target.is("button")) {
+    console.log("save button click");
+    const key = target.attr("id");
+    const value = target.parent().find("textarea").val();
+
+    const newObject = {
+      ...plannerEvents,
+      [key]: value,
+    };
+    localStorage.setItem("plannerEvents", JSON.stringify(newObject));
+    console.log(key, value);
+    console.log(plannerEvents);
+  }
 };
 const onReady = () => {
+  //set event listener on container
+  //target the container first
+  $(".container").click(onClick);
   displayCurrentDate();
   renderCalendarEvents();
 };
