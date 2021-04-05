@@ -6,7 +6,7 @@ const displayCurrentDate = () => {
 };
 
 const renderCalendarEvents = () => {
-  //get data from local Sorage
+  //get data from local Storage
   const plannerEvents = JSON.parse(localStorage.getItem("plannerEvents"));
 
   if (plannerEvents !== null) {
@@ -47,7 +47,6 @@ const onClick = function (event) {
   const target = $(event.target);
 
   if (target.is("button")) {
-    console.log("save button click");
     const key = target.attr("id");
     const value = target.parent().find("textarea").val();
     //declare a new object to push the Planner event pair key and value to the local Storage when the onClick() function is called when clicking the Save button
